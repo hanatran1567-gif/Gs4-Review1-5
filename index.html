@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học Tiếng Anh Lớp 4 - Vui Nhộn (Unit 1 - 5)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF6B6B;
+            --secondary: #4ECDC4;
+            --accent: #FFE66D;
+            --dark: #2C3E50;
+            --light: #F7F9FC;
+            --success: #2ECC71;
+            --unit1: #FF9F43;
+            --unit2: #54A0FF;
+            --unit3: #5F27CD;
+            --unit4: #00D2D3;
+            --unit5: #FF6B81;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: #FFF9F4;
+            color: var(--dark);
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Navigation */
+        aside {
+            width: 280px;
+            background: white;
+            border-right: 4px solid #FFE0D0;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0 15px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+
+        .brand {
+            padding: 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            color: white;
+            font-size: 22px;
+            font-weight: 900;
+            border-bottom: 4px dashed rgba(255,255,255,0.4);
+        }
+
+        .brand i {
+            margin-right: 8px;
+            animation: bounce 2s infinite;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 15px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: #F8F9FA;
+            border: 2px solid #E9ECEF;
+            color: #6C7A89;
+        }
+
+        .nav-item.unlocked {
+            color: var(--dark);
+            border-color: #D1D8E0;
+        }
+
+        .nav-item.unlocked:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--secondary), #22A6B3);
+            color: white;
+            border-color: #01A3A4;
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .nav-item.locked {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #E4E7EB;
+        }
+
+        .nav-item .badge-lock {
+            font-size: 14px;
+        }
+
+        .nav-item.flashcard-nav {
+            background: linear-gradient(135deg, #a55eea, #8854d0);
+            color: white;
+            border-color: #6c5ce7;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(165, 94, 234, 0.3);
+        }
+
+        /* Main Content Area */
+        main {
+            flex-grow: 1;
+            height: 100vh;
+            overflow-y: auto;
+            padding: 30px;
+            position: relative;
+            background: radial-gradient(circle, #FFFDF9 0%, #FFF5EC 100%);
+        }
+
+        .unit-section {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .unit-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cute Card Container */
+        .card-box {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 4px solid #FFF0E6;
+            position: relative;
+        }
+
+        .card-box h2 {
+            font-size: 24px;
+            color: var(--dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 3px dashed #FFE0D0;
+            padding-bottom: 12px;
+        }
+
+        .card-box h2 i {
+            color: var(--primary);
+            background: #FFE8E8;
+            padding: 10px;
+            border-radius: 12px;
+        }
+
+        /* Vocabulary Table */
+        .vocab-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .vocab-table th, .vocab-table td {
+            padding: 14px 16px;
+            text-align: left;
+        }
+
+        .vocab-table th {
+            background: #FF7675;
+            color: white;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .vocab-table tr:nth-child(even) {
+            background: #FFF8F6;
+        }
+
+        .vocab-table tr:hover {
+            background: #FFEBE8;
+        }
+
+        .vocab-table td {
+            border-bottom: 2px solid #F1F2F6;
+            font-size: 15px;
+        }
+
+        .speak-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 3px 8px rgba(78, 205, 196, 0.4);
+        }
+
+        .speak-btn:hover {
+            transform: scale(1.15);
+            background: #01A3A4;
+        }
+
+        /* Grammar Cards */
+        .grammar-card {
+            background: #F0F9FF;
+            border: 3px solid #BAE6FD;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .grammar-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0369A1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .formula-box {
+            background: white;
+            border: 2px dashed #38BDF8;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #0284C7;
+            font-size: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .example-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .example-list li {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            border-left: 4px solid var(--secondary);
+        }
+
+        .example-list li span.vn {
+            color: #64748B;
+            font-style: italic;
+        }
+
+        .note-box {
+            background: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 12px 15px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #92400E;
+        }
+
+        /* Mini Test Section */
+        .quiz-box {
+            background: #FFFBEB;
+            border: 3px dashed #FCD34D;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+
+        .quiz-box h3 {
+            color: #D97706;
+            font-size: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-item {
+            background: white;
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+            border: 2px solid #FDE68A;
+        }
+
+        .question-item p {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: #334155;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #F8FAFC;
+            border: 2px solid #E2E8F0;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .option-btn:hover {
+            background: #EFF6FF;
+            border-color: #3B82F6;
+        }
+
+        .option-btn.correct {
+            background: #DCFCE7 !important;
+            border-color: #22C55E !important;
+            color: #15803D;
+        }
+
+        .option-btn.incorrect {
+            background: #FEE2E2 !important;
+            border-color: #EF4444 !important;
+            color: #B91C1C;
+        }
+
+        .submit-quiz-btn {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 800;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+            display: block;
+            margin: 20px auto 0 auto;
+            transition: transform 0.2s;
+        }
+
+        .submit-quiz-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .quiz-result {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 800;
+            margin-top: 15px;
+        }
+
+        .next-unit-container {
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .next-unit-btn {
+            background: linear-gradient(135deg, #10B981, #059669);
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+            animation: pulseBtn 1.5s infinite;
+        }
+
+        @keyframes pulseBtn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Flashcard Section */
+        .flashcard-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+            margin: 30px 0;
+        }
+
+        .flashcard {
+            width: 380px;
+            height: 240px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border: 5px solid #FFD166;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .flashcard-back {
+            transform: rotateY(180deg);
+            background: #F0FDFA;
+            border-radius: 20px;
+        }
+
+        .fc-word {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .fc-type {
+            background: #FFE3E3;
+            color: #E74C3C;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .fc-ipa {
+            font-size: 16px;
+            color: #7F8C8D;
+            margin-bottom: 15px;
+        }
+
+        .fc-meaning {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0D9488;
+            margin-bottom: 10px;
+        }
+
+        .flashcard-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .fc-btn {
+            background: #4F46E5;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .fc-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Certificate Section */
+        .cert-box {
+            background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+            border: 6px solid #F59E0B;
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-box::before {
+            content: "🏆";
+            font-size: 120px;
+            position: absolute;
+            opacity: 0.1;
+            top: 20px;
+            left: 20px;
+        }
+
+        .cert-box::after {
+            content: "🌟";
+            font-size: 120px;
+            position: absolute;
+            opacity: 0.1;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .cert-title {
+            font-size: 32px;
+            font-weight: 900;
+            color: #B45309;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cert-name-input {
+            margin: 20px 0;
+        }
+
+        .cert-name-input input {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: 3px solid #F59E0B;
+            border-radius: 15px;
+            width: 320px;
+            text-align: center;
+            font-weight: 700;
+            outline: none;
+        }
+
+        .cert-display {
+            background: white;
+            border: 4px dashed #FCD34D;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .cert-display h3 {
+            font-size: 28px;
+            color: #D97706;
+            margin-bottom: 10px;
+        }
+
+        .cert-display p {
+            font-size: 18px;
+            color: #4B5563;
+            margin: 10px 0;
+        }
+
+        .congrats-badge {
+            font-size: 22px;
+            font-weight: 900;
+            color: #10B981;
+            margin-top: 15px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Menu -->
+    <aside>
+        <div class="brand">
+            <i class="fa-solid fa-graduation-cap"></i> English Kids 4
+        </div>
+        <ul class="nav-list" id="navList">
+            <li class="nav-item active unlocked" onclick="switchTab('unit1')">
+                <span>Unit 1: My Friends</span>
+                <i class="fa-solid fa-star"></i>
+            </li>
+            <li class="nav-item locked" id="nav-unit2" onclick="switchTab('unit2')">
+                <span>Unit 2: Time & Daily</span>
+                <i class="fa-solid fa-lock badge-lock"></i>
+            </li>
+            <li class="nav-item locked" id="nav-unit3" onclick="switchTab('unit3')">
+                <span>Unit 3: My Week</span>
+                <i class="fa-solid fa-lock badge-lock"></i>
+            </li>
+            <li class="nav-item locked" id="nav-unit4" onclick="switchTab('unit4')">
+                <span>Unit 4: Birthday Party</span>
+                <i class="fa-solid fa-lock badge-lock"></i>
+            </li>
+            <li class="nav-item locked" id="nav-unit5" onclick="switchTab('unit5')">
+                <span>Unit 5: Things We Can Do</span>
+                <i class="fa-solid fa-lock badge-lock"></i>
+            </li>
+            <li class="nav-item flashcard-nav" onclick="switchTab('flashcards')">
+                <span><i class="fa-solid fa-clone"></i> Ôn tập Flashcard</span>
+            </li>
+            <li class="nav-item locked" id="nav-congrats" onclick="switchTab('congrats')" style="background: #FEF3C7; border-color: #F59E0B; color: #B45309;">
+                <span><i class="fa-solid fa-trophy"></i> Chứng nhận hoàn thành</span>
+                <i class="fa-solid fa-lock badge-lock" id="lock-congrats"></i>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main>
+
+        <!-- ================= UNIT 1 ================= -->
+        <div id="unit1" class="unit-section active">
+            <div class="card-box">
+                <h2><i class="fa-solid fa-book-open"></i> Unit 1: MY FRIENDS</h2>
+                <h3 style="margin-bottom: 10px; color: #1565C0;">I. VOCABULARY (Từ vựng)</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Pronunciation</th>
+                            <th>Type</th>
+                            <th>Meaning</th>
+                            <th>Audio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>Viet Nam</b></td><td>/ˌviːetˈnɑːm/</td><td>(n)</td><td>nước Việt Nam</td><td><button class="speak-btn" onclick="speakText('Viet Nam')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Britain</b></td><td>/ˈbrɪtn/</td><td>(n)</td><td>Vương quốc Anh</td><td><button class="speak-btn" onclick="speakText('Britain')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>America</b></td><td>/əˈmerɪkə/</td><td>(n)</td><td>nước Mỹ</td><td><button class="speak-btn" onclick="speakText('America')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Australia</b></td><td>/ɒˈstreɪliə/</td><td>(n)</td><td>nước Úc</td><td><button class="speak-btn" onclick="speakText('Australia')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Singapore</b></td><td>/ˌsɪŋəˈpɔː(r)/</td><td>(n)</td><td>nước Sing-ga-po</td><td><button class="speak-btn" onclick="speakText('Singapore')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Malaysia</b></td><td>/məˈleɪʃə/</td><td>(n)</td><td>nước Ma-lai-xi-a</td><td><button class="speak-btn" onclick="speakText('Malaysia')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Thailand</b></td><td>/ˈtaɪlənd/</td><td>(n)</td><td>nước Thái Lan</td><td><button class="speak-btn" onclick="speakText('Thailand')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Japan</b></td><td>/ˈdʒæpən/</td><td>(n)</td><td>nước Nhật</td><td><button class="speak-btn" onclick="speakText('Japan')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>new</b></td><td>/njuː/</td><td>(adj)</td><td>mới</td><td><button class="speak-btn" onclick="speakText('new')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>friend</b></td><td>/frend/</td><td>(n)</td><td>bạn</td><td><button class="speak-btn" onclick="speakText('friend')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>where</b></td><td>/weə(r)/</td><td>(adv)</td><td>ở đâu</td><td><button class="speak-btn" onclick="speakText('where')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>from</b></td><td>/frɒm/</td><td>(prep)</td><td>từ/ đến từ</td><td><button class="speak-btn" onclick="speakText('from')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>come</b></td><td>/kʌm/</td><td>(v)</td><td>đến</td><td><button class="speak-btn" onclick="speakText('come')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-box">
+                <h3 style="margin-bottom: 15px; color: #1565C0;"><i class="fa-solid fa-pen-nib"></i> II. GRAMMAR (Ngữ pháp)</h3>
+                
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>1. Cách hỏi bạn từ đâu tới</span>
+                        <button class="speak-btn" onclick="speakText('Where are you from? I am from Viet Nam.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: Where are you from?</span>
+                        <span>Đáp: I'm from + quốc gia.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> Where are you from?</span> <span class="vn">Bạn đến từ đâu?</span></li>
+                        <li><span><b>B:</b> I'm from Viet Nam.</span> <span class="vn">Mình đến từ Việt Nam.</span></li>
+                    </ul>
+                    <div class="note-box">💡 <b>Lưu ý:</b> I'm = I am. Có thể dùng câu hỏi thay thế: <i>"Where do you come from?"</i> ➔ <i>"I come from Britain."</i></div>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>2. Cách hỏi ai đó từ đâu tới</span>
+                        <button class="speak-btn" onclick="speakText('Where is she from? She is from Malaysia.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: Where is she / he from?</span>
+                        <span>Đáp: She's / He's from + quốc gia.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> Where is she from?</span> <span class="vn">Cô ấy đến từ đâu?</span></li>
+                        <li><span><b>B:</b> She's from Malaysia.</span> <span class="vn">Cô ấy đến từ Ma-lai-xi-a.</span></li>
+                        <li><span><b>A:</b> Where is Ben from?</span> <span class="vn">Ben đến từ đâu?</span></li>
+                        <li><span><b>B:</b> He's from Singapore.</span> <span class="vn">Anh ấy đến từ Sing-ga-po.</span></li>
+                    </ul>
+                    <div class="note-box">💡 <b>Lưu ý:</b> She's = She is, He's = He is. Hoặc dùng: <i>"Where does she/he come from?"</i> ➔ <i>"She/He comes from Japan."</i></div>
+                </div>
+            </div>
+
+            <!-- Mini Quiz Unit 1 -->
+            <div class="quiz-box">
+                <h3><i class="fa-solid fa-gamepad"></i> Bài tập ôn tập Unit 1 (10 câu hỏi)</h3>
+                <div id="quiz-container-1"></div>
+                <button class="submit-quiz-btn" onclick="submitQuiz(1)">Nộp bài Unit 1</button>
+                <div class="quiz-result" id="result-1"></div>
+            </div>
+
+            <div class="next-unit-container" id="next-btn-1">
+                <button class="next-unit-btn" onclick="unlockUnit(2)">Chuyển sang Unit 2 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 2 ================= -->
+        <div id="unit2" class="unit-section">
+            <div class="card-box">
+                <h2><i class="fa-solid fa-book-open"></i> Unit 2: TIME AND DAILY ROUTINES</h2>
+                <h3 style="margin-bottom: 10px; color: #1565C0;">I. VOCABULARY (Từ vựng)</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Word</th><th>Pronunciation</th><th>Type</th><th>Meaning</th><th>Audio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>time</b></td><td>/taɪm/</td><td>(n)</td><td>thời gian</td><td><button class="speak-btn" onclick="speakText('time')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>get up</b></td><td>/ɡet ʌp/</td><td>(v.p)</td><td>thức dậy</td><td><button class="speak-btn" onclick="speakText('get up')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>have breakfast</b></td><td>/hæv 'brekfəst/</td><td>(v.p)</td><td>ăn sáng</td><td><button class="speak-btn" onclick="speakText('have breakfast')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>have lunch</b></td><td>/hæv lʌntʃ/</td><td>(v.p)</td><td>ăn trưa</td><td><button class="speak-btn" onclick="speakText('have lunch')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>have dinner</b></td><td>/hæv 'dɪnə(r)/</td><td>(v.p)</td><td>ăn tối</td><td><button class="speak-btn" onclick="speakText('have dinner')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>watch TV</b></td><td>/wɒtʃ ti: 'vi:/</td><td>(v.p)</td><td>xem ti-vi</td><td><button class="speak-btn" onclick="speakText('watch TV')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>go to school</b></td><td>/ɡəʊ tə sku:l/</td><td>(v.p)</td><td>đi học</td><td><button class="speak-btn" onclick="speakText('go to school')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>go to bed</b></td><td>/ɡəʊ tə bed/</td><td>(v.p)</td><td>đi ngủ</td><td><button class="speak-btn" onclick="speakText('go to bed')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>wash the face</b></td><td>/wɒʃ ðə feɪs/</td><td>(v.p)</td><td>rửa mặt</td><td><button class="speak-btn" onclick="speakText('wash the face')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>clean the teeth</b></td><td>/kli:n ðə ti:θ/</td><td>(v.p)</td><td>đánh răng</td><td><button class="speak-btn" onclick="speakText('clean the teeth')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>do homework</b></td><td>/du: 'həʊmwɜ:k/</td><td>(v.p)</td><td>làm bài tập về nhà</td><td><button class="speak-btn" onclick="speakText('do homework')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>read a book</b></td><td>/ri:d ə bʊk/</td><td>(v.p)</td><td>đọc sách</td><td><button class="speak-btn" onclick="speakText('read a book')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>go out</b></td><td>/ɡəʊ aʊt/</td><td>(v.p)</td><td>đi ra ngoài</td><td><button class="speak-btn" onclick="speakText('go out')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>chat with friends</b></td><td>/tʃæt wɪð frendz/</td><td>(v.p)</td><td>nói chuyện với bạn bè</td><td><button class="speak-btn" onclick="speakText('chat with friends')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>break time</b></td><td>/'breɪk taɪm/</td><td>(n)</td><td>giờ ra chơi</td><td><button class="speak-btn" onclick="speakText('break time')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-box">
+                <h3 style="margin-bottom: 15px; color: #1565C0;"><i class="fa-solid fa-pen-nib"></i> II. GRAMMAR (Ngữ pháp)</h3>
+                
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>1. Cách hỏi xem bây giờ là mấy giờ</span>
+                        <button class="speak-btn" onclick="speakText('What time is it? It is ten o clock.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What time is it?</span>
+                        <span>Đáp: It's + giờ + o'clock.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What time is it?</span> <span class="vn">Bây giờ là mấy giờ?</span></li>
+                        <li><span><b>B:</b> It's ten o'clock.</span> <span class="vn">Bây giờ là 10 giờ.</span></li>
+                    </ul>
+                    <div class="note-box">💡 <b>Mở rộng & Lưu ý:</b> Giờ quá: <i>It's + phút + past + giờ</i> | Giờ kém: <i>It's + phút + to + giờ</i>. a quarter = 15 phút, a half = 30 phút. a.m (0h-12h), p.m (13h-24h).</div>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>2. Cách hỏi bạn làm gì vào lúc mấy giờ</span>
+                        <button class="speak-btn" onclick="speakText('What time do you get up? I get up at 6 o clock.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What time do you + V-inf?</span>
+                        <span>Đáp: I + V-inf + at + time.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What time do you get up?</span> <span class="vn">Bạn thức dậy lúc mấy giờ?</span></li>
+                        <li><span><b>B:</b> I get up at 6 o'clock.</span> <span class="vn">Mình dậy lúc 6 giờ.</span></li>
+                    </ul>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>3. Cách hỏi ai đó làm gì vào lúc mấy giờ</span>
+                        <button class="speak-btn" onclick="speakText('What time does he go to school? He goes to school at 7 o clock.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What time does he/she + V-inf?</span>
+                        <span>Đáp: He/She + V(s/es) + at + time.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What time does he go to school?</span> <span class="vn">Anh ấy đi tới trường lúc mấy giờ?</span></li>
+                        <li><span><b>B:</b> He goes to school at 7 o'clock.</span> <span class="vn">Anh ấy đi tới trường lúc 7 giờ.</span></li>
+                    </ul>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>4 & 5. Cách hỏi bạn/ai đó lúc mấy giờ làm gì</span>
+                        <button class="speak-btn" onclick="speakText('What do you do at 10 p.m.? I go to bed.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What do you / does he/she do at + time?</span>
+                        <span>Đáp: I + V-inf / He/She + V(s/es).</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What do you do at 10 p.m.?</span> <span class="vn">Bạn làm gì lúc 10 giờ tối?</span></li>
+                        <li><span><b>B:</b> I go to bed.</span> <span class="vn">Mình đi ngủ.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Quiz Unit 2 -->
+            <div class="quiz-box">
+                <h3><i class="fa-solid fa-gamepad"></i> Bài tập ôn tập Unit 2 (10 câu hỏi)</h3>
+                <div id="quiz-container-2"></div>
+                <button class="submit-quiz-btn" onclick="submitQuiz(2)">Nộp bài Unit 2</button>
+                <div class="quiz-result" id="result-2"></div>
+            </div>
+
+            <div class="next-unit-container" id="next-btn-2">
+                <button class="next-unit-btn" onclick="unlockUnit(3)">Chuyển sang Unit 3 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 3 ================= -->
+        <div id="unit3" class="unit-section">
+            <div class="card-box">
+                <h2><i class="fa-solid fa-book-open"></i> Unit 3: MY WEEK</h2>
+                <h3 style="margin-bottom: 10px; color: #1565C0;">I. VOCABULARY (Từ vựng)</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Word</th><th>Pronunciation</th><th>Type</th><th>Meaning</th><th>Audio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>Monday</b></td><td>/'mʌndeɪ/</td><td>(n)</td><td>thứ Hai</td><td><button class="speak-btn" onclick="speakText('Monday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Tuesday</b></td><td>/'tju:zdeɪ/</td><td>(n)</td><td>thứ Ba</td><td><button class="speak-btn" onclick="speakText('Tuesday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Wednesday</b></td><td>/'wenzdeɪ/</td><td>(n)</td><td>thứ Tư</td><td><button class="speak-btn" onclick="speakText('Wednesday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Thursday</b></td><td>/'θɜ:zdeɪ/</td><td>(n)</td><td>thứ Năm</td><td><button class="speak-btn" onclick="speakText('Thursday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Friday</b></td><td>/'fraɪdeɪ/</td><td>(n)</td><td>thứ Sáu</td><td><button class="speak-btn" onclick="speakText('Friday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Saturday</b></td><td>/'sætədeɪ/</td><td>(n)</td><td>thứ Bảy</td><td><button class="speak-btn" onclick="speakText('Saturday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>Sunday</b></td><td>/'sʌndeɪ/</td><td>(n)</td><td>Chủ Nhật</td><td><button class="speak-btn" onclick="speakText('Sunday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>today</b></td><td>/tə'deɪ/</td><td>(n)</td><td>hôm nay</td><td><button class="speak-btn" onclick="speakText('today')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>do housework</b></td><td>/du: 'haʊswɜ:k/</td><td>(v.p)</td><td>làm việc nhà</td><td><button class="speak-btn" onclick="speakText('do housework')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>do homework</b></td><td>/du: 'həʊmwɜ:k/</td><td>(v.p)</td><td>làm bài tập về nhà</td><td><button class="speak-btn" onclick="speakText('do homework')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>listen to music</b></td><td>/'lɪsn tə 'mju:zɪk/</td><td>(v.p)</td><td>nghe nhạc</td><td><button class="speak-btn" onclick="speakText('listen to music')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>study at school</b></td><td>/'stʌdi ət sku:l/</td><td>(v.p)</td><td>học ở trường</td><td><button class="speak-btn" onclick="speakText('study at school')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>read books</b></td><td>/ri:d bʊks/</td><td>(v.p)</td><td>đọc sách</td><td><button class="speak-btn" onclick="speakText('read books')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>visit</b></td><td>/'vɪzɪt/</td><td>(v)</td><td>thăm</td><td><button class="speak-btn" onclick="speakText('visit')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>weekend</b></td><td>/,wi:k'end/</td><td>(n)</td><td>cuối tuần</td><td><button class="speak-btn" onclick="speakText('weekend')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>weekday</b></td><td>/'wi:kdeɪ/</td><td>(n)</td><td>ngày trong tuần</td><td><button class="speak-btn" onclick="speakText('weekday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-box">
+                <h3 style="margin-bottom: 15px; color: #1565C0;"><i class="fa-solid fa-pen-nib"></i> II. GRAMMAR (Ngữ pháp)</h3>
+                
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>1. Cách hỏi xem hôm nay là thứ mấy trong tuần</span>
+                        <button class="speak-btn" onclick="speakText('What day is it today? It is Monday.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What day is it today?</span>
+                        <span>Đáp: It's + thứ trong tuần.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What day is it today?</span> <span class="vn">Hôm nay là thứ mấy?</span></li>
+                        <li><span><b>B:</b> It's Monday.</span> <span class="vn">Hôm nay là thứ Hai.</span></li>
+                    </ul>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>2. Cách hỏi xem bạn làm gì vào ngày nào đó trong tuần</span>
+                        <button class="speak-btn" onclick="speakText('What do you do on Tuesdays? I go to school.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What do you do on + thứ?</span>
+                        <span>Đáp: I + V (+ on + thứ).</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What do you do on Tuesdays?</span> <span class="vn">Bạn làm gì vào thứ Ba?</span></li>
+                        <li><span><b>B:</b> I go to school.</span> <span class="vn">Mình đi tới trường.</span></li>
+                    </ul>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>3. Cách hỏi xem ai đó làm gì vào ngày nào đó trong tuần</span>
+                        <button class="speak-btn" onclick="speakText('What does Linda do on Wednesdays? She listens to music.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What does he/she do on + thứ?</span>
+                        <span>Đáp: He/She + V(s/es) (+ on + thứ).</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What does Linda do on Wednesdays?</span> <span class="vn">Linda làm gì vào thứ Tư?</span></li>
+                        <li><span><b>B:</b> She listens to music.</span> <span class="vn">Cô ấy nghe nhạc.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Quiz Unit 3 -->
+            <div class="quiz-box">
+                <h3><i class="fa-solid fa-gamepad"></i> Bài tập ôn tập Unit 3 (10 câu hỏi)</h3>
+                <div id="quiz-container-3"></div>
+                <button class="submit-quiz-btn" onclick="submitQuiz(3)">Nộp bài Unit 3</button>
+                <div class="quiz-result" id="result-3"></div>
+            </div>
+
+            <div class="next-unit-container" id="next-btn-3">
+                <button class="next-unit-btn" onclick="unlockUnit(4)">Chuyển sang Unit 4 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 4 ================= -->
+        <div id="unit4" class="unit-section">
+            <div class="card-box">
+                <h2><i class="fa-solid fa-book-open"></i> Unit 4: MY BIRTHDAY PARTY</h2>
+                <h3 style="margin-bottom: 10px; color: #1565C0;">I. VOCABULARY (Từ vựng)</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Word</th><th>Pronunciation</th><th>Type</th><th>Meaning</th><th>Audio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>January</b></td><td>/'dʒænjuəri/</td><td>(n)</td><td>tháng Giêng</td><td><button class="speak-btn" onclick="speakText('January')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>February</b></td><td>/'februəri/</td><td>(n)</td><td>tháng Hai</td><td><button class="speak-btn" onclick="speakText('February')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>March</b></td><td>/mɑːtʃ/</td><td>(n)</td><td>tháng Ba</td><td><button class="speak-btn" onclick="speakText('March')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>April</b></td><td>/'eɪprəl/</td><td>(n)</td><td>tháng Tư</td><td><button class="speak-btn" onclick="speakText('April')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>May</b></td><td>/meɪ/</td><td>(n)</td><td>tháng Năm</td><td><button class="speak-btn" onclick="speakText('May')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>month</b></td><td>/mʌnθ/</td><td>(n)</td><td>tháng</td><td><button class="speak-btn" onclick="speakText('month')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>when</b></td><td>/wen/</td><td>(adv)</td><td>khi nào</td><td><button class="speak-btn" onclick="speakText('when')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>birthday</b></td><td>/'bɜːθdeɪ/</td><td>(n)</td><td>sinh nhật</td><td><button class="speak-btn" onclick="speakText('birthday')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>party</b></td><td>/'pɑːti/</td><td>(n)</td><td>tiệc/ bữa tiệc</td><td><button class="speak-btn" onclick="speakText('party')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>chips</b></td><td>/tʃɪps/</td><td>(n)</td><td>khoai tây chiên</td><td><button class="speak-btn" onclick="speakText('chips')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>grape</b></td><td>/ɡreɪp/</td><td>(n)</td><td>nho</td><td><button class="speak-btn" onclick="speakText('grape')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>jam</b></td><td>/dʒæm/</td><td>(n)</td><td>mứt</td><td><button class="speak-btn" onclick="speakText('jam')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>cake</b></td><td>/keɪk/</td><td>(n)</td><td>bánh kem</td><td><button class="speak-btn" onclick="speakText('cake')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>milk</b></td><td>/mɪlk/</td><td>(n)</td><td>sữa</td><td><button class="speak-btn" onclick="speakText('milk')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>juice</b></td><td>/dʒuːs/</td><td>(n)</td><td>nước ép</td><td><button class="speak-btn" onclick="speakText('juice')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>lemonade</b></td><td>/ˌlemə'neɪd/</td><td>(n)</td><td>nước chanh</td><td><button class="speak-btn" onclick="speakText('lemonade')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>water</b></td><td>/'wɔːtə(r)/</td><td>(n)</td><td>nước lọc</td><td><button class="speak-btn" onclick="speakText('water')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>eat</b></td><td>/iːt/</td><td>(v)</td><td>ăn</td><td><button class="speak-btn" onclick="speakText('eat')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>drink</b></td><td>/drɪŋk/</td><td>(v)</td><td>uống</td><td><button class="speak-btn" onclick="speakText('drink')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>want</b></td><td>/wɒnt/</td><td>(v)</td><td>muốn</td><td><button class="speak-btn" onclick="speakText('want')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>make</b></td><td>/meɪk/</td><td>(v)</td><td>làm</td><td><button class="speak-btn" onclick="speakText('make')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>hat</b></td><td>/hæt/</td><td>(n)</td><td>cái mũ</td><td><button class="speak-btn" onclick="speakText('hat')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-box">
+                <h3 style="margin-bottom: 15px; color: #1565C0;"><i class="fa-solid fa-pen-nib"></i> II. GRAMMAR (Ngữ pháp)</h3>
+                
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>1 & 2. Cách hỏi về sinh nhật của bạn hoặc ai đó</span>
+                        <button class="speak-btn" onclick="speakText('When is your birthday? It is in April.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: When's your / his / her birthday?</span>
+                        <span>Đáp: It's in + tháng.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> When's your birthday?</span> <span class="vn">Sinh nhật của bạn khi nào?</span></li>
+                        <li><span><b>B:</b> It's in April.</span> <span class="vn">Nó vào tháng Tư.</span></li>
+                        <li><span><b>A:</b> When's her birthday?</span> <span class="vn">Sinh nhật cô ấy khi nào?</span></li>
+                        <li><span><b>B:</b> It's in March.</span> <span class="vn">Nó vào tháng Ba.</span></li>
+                    </ul>
+                </div>
+
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>3 & 4. Cách hỏi bạn hoặc ai đó muốn ăn/uống gì</span>
+                        <button class="speak-btn" onclick="speakText('What do you want to eat? I want some jam.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: What do you / does he/she want to eat/drink?</span>
+                        <span>Đáp: I want / He/She wants + đồ ăn/thức uống.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> What do you want to eat?</span> <span class="vn">Bạn muốn ăn gì?</span></li>
+                        <li><span><b>B:</b> I want some jam.</span> <span class="vn">Mình muốn một chút mứt.</span></li>
+                        <li><span><b>A:</b> What does Mary want to eat?</span> <span class="vn">Mary muốn ăn gì?</span></li>
+                        <li><span><b>B:</b> She wants some grapes.</span> <span class="vn">Cô ấy muốn vài quả nho.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mini Quiz Unit 4 -->
+            <div class="quiz-box">
+                <h3><i class="fa-solid fa-gamepad"></i> Bài tập ôn tập Unit 4 (10 câu hỏi)</h3>
+                <div id="quiz-container-4"></div>
+                <button class="submit-quiz-btn" onclick="submitQuiz(4)">Nộp bài Unit 4</button>
+                <div class="quiz-result" id="result-4"></div>
+            </div>
+
+            <div class="next-unit-container" id="next-btn-4">
+                <button class="next-unit-btn" onclick="unlockUnit(5)">Chuyển sang Unit 5 <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= UNIT 5 ================= -->
+        <div id="unit5" class="unit-section">
+            <div class="card-box">
+                <h2><i class="fa-solid fa-book-open"></i> Unit 5: THINGS WE CAN DO</h2>
+                <h3 style="margin-bottom: 10px; color: #1565C0;">I. VOCABULARY (Từ vựng)</h3>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Word</th><th>Pronunciation</th><th>Type</th><th>Meaning</th><th>Audio</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><b>can</b></td><td>/kən/; /kæn/</td><td>(m.v)</td><td>có thể</td><td><button class="speak-btn" onclick="speakText('can')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>cook</b></td><td>/kʊk/</td><td>(v)</td><td>nấu ăn</td><td><button class="speak-btn" onclick="speakText('cook')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>draw</b></td><td>/drɔː/</td><td>(v)</td><td>vẽ</td><td><button class="speak-btn" onclick="speakText('draw')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>skip</b></td><td>/skɪp/</td><td>(v)</td><td>nhảy dây</td><td><button class="speak-btn" onclick="speakText('skip')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>play</b></td><td>/pleɪ/</td><td>(v)</td><td>chơi</td><td><button class="speak-btn" onclick="speakText('play')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>guitar</b></td><td>/ɡɪ'tɑː(r)/</td><td>(n)</td><td>đàn ghi-ta</td><td><button class="speak-btn" onclick="speakText('guitar')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>piano</b></td><td>/pi'ænəʊ/</td><td>(n)</td><td>đàn dương cầm</td><td><button class="speak-btn" onclick="speakText('piano')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>badminton</b></td><td>/'bædmɪntən/</td><td>(n)</td><td>cầu lông</td><td><button class="speak-btn" onclick="speakText('badminton')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>football</b></td><td>/'fʊtbɔːl/</td><td>(n)</td><td>bóng đá</td><td><button class="speak-btn" onclick="speakText('football')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>ride</b></td><td>/raɪd/</td><td>(v)</td><td>lái, cưỡi</td><td><button class="speak-btn" onclick="speakText('ride')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>bike</b></td><td>/baɪk/</td><td>(n)</td><td>xe đạp</td><td><button class="speak-btn" onclick="speakText('bike')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>horse</b></td><td>/hɔːs/</td><td>(n)</td><td>con ngựa</td><td><button class="speak-btn" onclick="speakText('horse')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>fly</b></td><td>/flaɪ/</td><td>(v)</td><td>bay, thả</td><td><button class="speak-btn" onclick="speakText('fly')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>kite</b></td><td>/kaɪt/</td><td>(n)</td><td>diều</td><td><button class="speak-btn" onclick="speakText('kite')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>roller skate</b></td><td>/'rəʊlə skeɪt/</td><td>(v)</td><td>trượt pa-tanh</td><td><button class="speak-btn" onclick="speakText('roller skate')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                        <tr><td><b>swim</b></td><td>/swɪm/</td><td>(v)</td><td>bơi</td><td><button class="speak-btn" onclick="speakText('swim')"><i class="fa-solid fa-volume-high"></i></button></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-box">
+                <h3 style="margin-bottom: 15px; color: #1565C0;"><i class="fa-solid fa-pen-nib"></i> II. GRAMMAR (Ngữ pháp)</h3>
+                
+                <div class="grammar-card">
+                    <div class="grammar-title">
+                        <span>Cách hỏi xem ai đó có thể làm việc gì hay không</span>
+                        <button class="speak-btn" onclick="speakText('Can you play badminton? Yes, I can.')"><i class="fa-solid fa-volume-high"></i></button>
+                    </div>
+                    <div class="formula-box">
+                        <span>Hỏi: Can + S + V1?</span>
+                        <span>Đáp: Yes, S + can / No, S + can't, but S + V2.</span>
+                    </div>
+                    <ul class="example-list">
+                        <li><span><b>A:</b> Can you play badminton?</span> <span class="vn">Bạn có thể chơi cầu lông không?</span></li>
+                        <li><span><b>B:</b> Yes, I can.</span> <span class="vn">Có, mình có thể.</span></li>
+                        <li><span><b>A:</b> Can he fly a kite?</span> <span class="vn">Anh ấy thả diều được không?</span></li>
+                        <li><span><b>B:</b> No, he can't, but he can swim.</span> <span class="vn">Không, nhưng anh ấy bơi được.</span></li>
+                    </ul>
+                    <div class="note-box">💡 <b>Lưu ý:</b> can't = cannot</div>
+                </div>
+            </div>
+
+            <!-- Mini Quiz Unit 5 -->
+            <div class="quiz-box">
+                <h3><i class="fa-solid fa-gamepad"></i> Bài tập ôn tập Unit 5 (10 câu hỏi)</h3>
+                <div id="quiz-container-5"></div>
+                <button class="submit-quiz-btn" onclick="submitQuiz(5)">Nộp bài Unit 5</button>
+                <div class="quiz-result" id="result-5"></div>
+            </div>
+
+            <div class="next-unit-container" id="next-btn-5">
+                <button class="next-unit-btn" onclick="unlockCongrats()">Xem chứng nhận hoàn thành <i class="fa-solid fa-trophy"></i></button>
+            </div>
+        </div>
+
+        <!-- ================= FLASHCARDS ================= -->
+        <div id="flashcards" class="unit-section">
+            <div class="card-box" style="text-align: center;">
+                <h2><i class="fa-solid fa-clone"></i> Flashcard Tổng Hợp (Unit 1 - Unit 5)</h2>
+                <p style="color: #64748B; margin-bottom: 20px;">Bấm vào thẻ để lật mặt sau xem nghĩa tiếng Việt nhé!</p>
+                
+                <div class="flashcard-container">
+                    <div class="flashcard" id="fc-card" onclick="flipCard()">
+                        <div class="flashcard-face flashcard-front">
+                            <span class="fc-type" id="fc-type-label">(n)</span>
+                            <div class="fc-word" id="fc-word-label">Viet Nam</div>
+                            <div class="fc-ipa" id="fc-ipa-label">/ˌviːetˈnɑːm/</div>
+                            <button class="speak-btn" onclick="event.stopPropagation(); speakText(currentFcWord)"><i class="fa-solid fa-volume-high"></i></button>
+                        </div>
+                        <div class="flashcard-face flashcard-back">
+                            <div class="fc-meaning" id="fc-meaning-label">Nước Việt Nam</div>
+                            <div style="font-size: 15px; color: #475569;" id="fc-example-label">Ex: I am from Viet Nam.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-controls">
+                    <button class="fc-btn" onclick="prevCard()"><i class="fa-solid fa-arrow-left"></i> Thẻ trước</button>
+                    <button class="fc-btn" onclick="nextCard()">Thẻ tiếp <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= CONGRATS / CERTIFICATE ================= -->
+        <div id="congrats" class="unit-section">
+            <div class="cert-box">
+                <div class="cert-title">🎉 Chúc Mừng Hoàn Thành Xuất Sắc! 🎉</div>
+                <p style="font-size: 18px; color: #92400E; margin-bottom: 15px;">Bạn đã hoàn thành trọn vẹn toàn bộ 5 Unit Tiếng Anh Lớp 4!</p>
+                
+                <div class="cert-name-input">
+                    <input type="text" id="studentNameInput" placeholder="Nhập tên đầy đủ của bạn..." />
+                    <button class="submit-quiz-btn" style="margin: 15px auto 0 auto;" onclick="generateCertificate()">Tạo Chứng Nhận</button>
+                </div>
+
+                <div class="cert-display" id="certDisplay">
+                    <h3>CHỨNG NHẬN HOÀN THÀNH</h3>
+                    <p>Chứng nhận trao tặng học sinh:</p>
+                    <h2 id="displayName" style="color: #D97706; font-size: 32px; margin: 10px 0;">[Tên học sinh]</h2>
+                    <p>Đã xuất sắc hoàn thành toàn bộ chương trình Tiếng Anh Lớp 4 (Unit 1 đến Unit 5) với tỉ lệ hoàn thành <b>100%</b>.</p>
+                    <div class="congrats-badge">🌟 Siêu sao tiếng Anh nhí! 🌟</div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Speech Synthesis helper
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Tab Navigation
+        function switchTab(tabId) {
+            const navItem = document.getElementById('nav-' + tabId);
+            if (navItem && navItem.classList.contains('locked') && tabId !== 'flashcards') {
+                alert('Bạn cần hoàn thành bài tập của bài trước để mở khóa bài học này nhé!');
+                return;
+            }
+
+            document.querySelectorAll('.unit-section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            
+            // Find nav matching tabId
+            const items = document.querySelectorAll('.nav-item');
+            items.forEach(item => {
+                if(item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Unlocking progress logic
+        function unlockUnit(unitNum) {
+            const navEl = document.getElementById('nav-unit' + unitNum);
+            if(navEl) {
+                navEl.classList.remove('locked');
+                navEl.classList.add('unlocked');
+                const lockIcon = navEl.querySelector('.badge-lock');
+                if(lockIcon) lockIcon.remove();
+            }
+            switchTab('unit' + unitNum);
+        }
+
+        function unlockCongrats() {
+            const congratsNav = document.getElementById('nav-congrats');
+            congratsNav.classList.remove('locked');
+            congratsNav.classList.add('unlocked');
+            document.getElementById('lock-congrats').remove();
+            switchTab('congrats');
+        }
+
+        // Quiz Data Bank (10 questions per unit)
+        const quizzes = {
+            1: [
+                {q: "1. 'Viet Nam' có nghĩa là gì?", options: ["Nước Mỹ", "Nước Việt Nam", "Nước Anh", "Nước Úc"], correct: 1},
+                {q: "2. Từ nào có nghĩa là 'Vương quốc Anh'?", options: ["America", "Japan", "Britain", "Singapore"], correct: 2},
+                {q: "3. Chọn từ đúng cho 'nước Mỹ':", options: ["America", "Malaysia", "Thailand", "Australia"], correct: 0},
+                {q: "4. Phiên âm của từ 'friend' là gì?", options: ["/frend/", "/nju:/", "/frɒm/", "/weə(r)/"], correct: 0},
+                {q: "5. Chọn câu hỏi đúng về quê quán của bạn:", options: ["Where are you from?", "What is your name?", "How old are you?", "When is your birthday?"], correct: 0},
+                {q: "6. 'I'm from Viet Nam' có nghĩa là gì?", options: ["Mình thích Việt Nam", "Mình đến từ Việt Nam", "Mình sống ở Việt Nam", "Mình đi Việt Nam"], correct: 1},
+                {q: "7. Điền từ thích hợp: Where ... she from?", options: ["are", "am", "is", "do"], correct: 2},
+                {q: "8. 'She's from Malaysia' viết đầy đủ là gì?", options: ["She is from Malaysia", "She are from Malaysia", "He is from Malaysia", "She come from Malaysia"], correct: 0},
+                {q: "9. Từ 'new' thuộc loại từ gì?", options: ["(n) - Danh từ", "(v) - Động từ", "(adj) - Tính từ", "(prep) - Giới từ"], correct: 2},
+                {q: "10. Chọn câu trả lời thay thế chính xác cho 'Where are you from?':", options: ["Where do you come from?", "Where are you go?", "Where do you live?", "Where are you going?"], correct: 0}
+            ],
+            2: [
+                {q: "1. 'get up' có nghĩa là gì?", options: ["Đi ngủ", "Thức dậy", "Ăn sáng", "Đánh răng"], correct: 1},
+                {q: "2. 'What time is it?' dùng để hỏi gì?", options: ["Hỏi tên", "Hỏi tuổi", "Hỏi mấy giờ", "Hỏi quê quán"], correct: 2},
+                {q: "3. 'It's ten o'clock' nghĩa là:", options: ["Bây giờ là 9 giờ", "Bây giờ là 10 giờ", "Bây giờ là 11 giờ", "Bây giờ là 12 giờ"], correct: 1},
+                {q: "4. 'a quarter' bằng bao nhiêu phút?", options: ["10 phút", "15 phút", "30 phút", "45 phút"], correct: 1},
+                {q: "5. 'a half' bằng bao nhiêu phút?", options: ["15 phút", "20 phút", "30 phút", "60 phút"], correct: 2},
+                {q: "6. Chọn câu đúng để hỏi bạn thức dậy lúc mấy giờ:", options: ["What time do you get up?", "What time does you get up?", "What do you get up?", "What time are you get up?"], correct: 0},
+                {q: "7. 'I get up at 6 a.m.' có nghĩa là:", options: ["Mình đi ngủ lúc 6 giờ tối", "Mình thức dậy lúc 6 giờ sáng", "Mình ăn sáng lúc 6 giờ", "Mình đi học lúc 6 giờ"], correct: 1},
+                {q: "8. Động từ 'have breakfast' có nghĩa là:", options: ["Ăn trưa", "Ăn tối", "Ăn sáng", "Ăn vặt"], correct: 2},
+                {q: "9. 'p.m.' chỉ khoảng thời gian nào trong ngày?", options: ["Từ 0 đến 12 giờ", "Từ 13 đến 24 giờ", "Cả ngày", "Buổi sáng"], correct: 1},
+                {q: "10. Chọn câu đúng khi nói ai đó làm gì lúc mấy giờ:", options: ["He go to school at 7 o'clock", "He goes to school at 7 o'clock", "He going to school at 7 o'clock", "He to go school at 7 o'clock"], correct: 1}
+            ],
+            3: [
+                {q: "1. 'Wednesday' là thứ mấy?", options: ["Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm"], correct: 2},
+                {q: "2. 'weekend' có nghĩa là gì?", options: ["Ngày trong tuần", "Cuối tuần", "Hôm qua", "Ngày mai"], correct: 1},
+                {q: "3. 'do housework' nghĩa là:", options: ["Làm bài tập", "Làm việc nhà", "Đọc sách", "Nghe nhạc"], correct: 1},
+                {q: "4. Chọn câu hỏi hôm nay là thứ mấy:", options: ["What day is it today?", "What time is it today?", "What date is it today?", "What is today?"], correct: 0},
+                {q: "5. 'It's Monday' nghĩa là:", options: ["Hôm nay là Chủ Nhật", "Hôm nay là thứ Hai", "Hôm nay là thứ Ba", "Hôm nay là thứ Sáu"], correct: 1},
+                {q: "6. Điền từ đúng: What do you do ... Tuesdays?", options: ["in", "at", "on", "to"], correct: 2},
+                {q: "7. 'listen to music' nghĩa là:", options: ["Xem tivi", "Nghe nhạc", "Đọc sách", "Nấu ăn"], correct: 1},
+                {q: "8. 'study at school' có nghĩa là gì?", options: ["Chơi ở nhà", "Học ở trường", "Đi du lịch", "Đọc sách"], correct: 1},
+                {q: "9. 'What does Linda do on Wednesdays?' dùng để hỏi ai?", options: ["Hỏi bạn", "Hỏi Linda", "Hỏi người khác (nữ) về việc làm vào thứ Tư", "Hỏi về ngày mai"], correct: 2},
+                {q: "10. Từ nào chỉ 'ngày trong tuần'?", options: ["weekend", "weekday", "today", "tomorrow"], correct: 1}
+            ],
+            4: [
+                {q: "1. 'January' là tháng mấy?", options: ["Tháng Giêng (Tháng 1)", "Tháng Hai", "Tháng Ba", "Tháng Tư"], correct: 0},
+                {q: "2. 'birthday' có nghĩa là:", options: ["Sinh nhật", "Bữa tiệc", "Món quà", "Chiếc mũ"], correct: 0},
+                {q: "3. Chọn câu hỏi sinh nhật của bạn:", options: ["When's your birthday?", "When is your party?", "What is your birthday?", "Where is your birthday?"], correct: 0},
+                {q: "4. 'It's in April' nghĩa là:", options: ["Nó vào tháng Ba", "Nó vào tháng Tư", "Nó vào tháng Năm", "Nó vào tháng Giêng"], correct: 1},
+                {q: "5. 'chips' có nghĩa là gì?", options: ["Khoai tây chiên", "Nước ép", "Bánh kem", "Mứt"], correct: 0},
+                {q: "6. 'lemonade' là loại nước gì?", options: ["Nước cam", "Nước chanh", "Nước lọc", "Sữa"], correct: 1},
+                {q: "7. 'What do you want to eat?' dùng để hỏi gì?", options: ["Bạn muốn uống gì?", "Bạn muốn ăn gì?", "Bạn muốn mua gì?", "Bạn muốn đi đâu?"], correct: 1},
+                {q: "8. 'She wants some grapes' nghĩa là:", options: ["Cô ấy muốn một ít nho", "Cô ấy muốn một ít mứt", "Cô ấy muốn uống nước", "Cô ấy thích bánh kem"], correct: 0},
+                {q: "9. Từ 'want' thuộc loại từ nào?", options: ["(n) - Danh từ", "(v) - Động từ", "(adj) - Tính từ", "(prep) - Giới từ"], correct: 1},
+                {q: "10. 'Water is my favourite drink' có nghĩa là:", options: ["Sữa là đồ uống yêu thích", "Nước lọc là đồ uống yêu thích của mình", "Nước chanh rất chua", "Nước ép rất ngon"], correct: 1}
+            ],
+            5: [
+                {q: "1. Động từ khuyết thiếu 'can' có nghĩa là:", options: ["Không thể", "Có thể", "Phải", "Nên"], correct: 1},
+                {q: "2. 'cook' có nghĩa là:", options: ["Vẽ", "Nấu ăn", "Nhảy dây", "Bơi"], correct: 1},
+                {q: "3. 'draw' nghĩa là:", options: ["Vẽ", "Hát", "Nhảy", "Chơi đàn"], correct: 0},
+                {q: "4. 'badminton' là môn thể thao gì?", options: ["Bóng đá", "Cầu lông", "Bóng rổ", "Bơi lội"], correct: 1},
+                {q: "5. Chọn câu hỏi 'Bạn có thể chơi cầu lông không?':", options: ["Can you play badminton?", "Do you play badminton?", "Are you play badminton?", "Can you play guitar?"], correct: 0},
+                {q: "6. Trả lời khẳng định cho 'Can you...':", options: ["Yes, I can.", "No, I can't.", "Yes, I do.", "No, I don't."], correct: 0},
+                {q: "7. 'guitar' là nhạc cụ gì?", options: ["Đàn piano", "Đàn ghi-ta", "Đàn violin", "Sáo"], correct: 1},
+                {q: "8. 'roller skate' có nghĩa là:", options: ["Trượt patanh", "Đi xe đạp", "Cưỡi ngựa", "Chạy bộ"], correct: 0},
+                {q: "9. 'can't' viết đầy đủ là gì?", options: ["can not", "cannot", "can no", "could not"], correct: 1},
+                {q: "10. 'My father can ride a horse' nghĩa là:", options: ["Bố mình biết lái xe đạp", "Bố mình biết cưỡi ngựa", "Bố mình biết bơi", "Bố mình biết thả diều"], correct: 1}
+            ]
+        };
+
+        // Render Quizzes
+        function renderQuizzes() {
+            for (let u = 1; u <= 5; u++) {
+                const container = document.getElementById('quiz-container-' + u);
+                let html = '';
+                quizzes[u].forEach((item, idx) => {
+                    html += `
+                        <div class="question-item" data-q="${idx}" data-correct="${item.correct}">
+                            <p>${item.q}</p>
+                            <div class="options-grid">
+                    `;
+                    item.options.forEach((opt, oIdx) => {
+                        html += `<button class="option-btn" onclick="selectOption(this, ${idx}, ${oIdx})">${String.fromCharCode(65 + oIdx)}. ${opt}</button>`;
+                    });
+                    html += `</div></div>`;
+                });
+                container.innerHTML = html;
+            }
+        }
+
+        function selectOption(btn, qIdx, oIdx) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected', 'correct', 'incorrect'));
+            btn.classList.add('selected');
+        }
+
+        function submitQuiz(unitNum) {
+            const container = document.getElementById('quiz-container-' + unitNum);
+            const questions = container.querySelectorAll('.question-item');
+            let score = 0;
+            let answeredCount = 0;
+
+            questions.forEach((qItem, idx) => {
+                const selectedBtn = qItem.querySelector('.option-btn.selected');
+                const correctIdx = parseInt(qItem.getAttribute('data-correct'));
+                const buttons = qItem.querySelectorAll('.option-btn');
+
+                if (selectedBtn) {
+                    answeredCount++;
+                    const selectedIdx = Array.from(buttons).indexOf(selectedBtn);
+                    if (selectedIdx === correctIdx) {
+                        score++;
+                        selectedBtn.classList.add('correct');
+                    } else {
+                        selectedBtn.classList.add('incorrect');
+                        buttons[correctIdx].classList.add('correct');
+                    }
+                } else {
+                    buttons[correctIdx].classList.add('correct');
+                }
+            });
+
+            const resultEl = document.getElementById('result-' + unitNum);
+            resultEl.innerHTML = `Bạn đạt điểm số: <span style="color: #2ECC71;">${score}</span> / 10 câu đúng!`;
+
+            if (score >= 7) {
+                resultEl.innerHTML += `<br><span style="color: #10B981; font-size: 16px;">🌟 Tuyệt vời! Bạn đã vượt qua bài tập Unit ${unitNum}.</span>`;
+                document.getElementById('next-btn-' + unitNum).style.display = 'block';
+            } else {
+                resultEl.innerHTML += `<br><span style="color: #EF4444; font-size: 16px;">💪 Cố gắng ôn lại bài và thử lại để đạt từ 7/7 điểm trở lên nhé!</span>`;
+            }
+        }
+
+        // Flashcards Data (Combined all units vocabulary)
+        const flashcardData = [
+            // Unit 1
+            {word: "Viet Nam", ipa: "/ˌviːetˈnɑːm/", type: "(n)", meaning: "Nước Việt Nam", ex: "I am from Viet Nam."},
+            {word: "Britain", ipa: "/ˈbrɪtn/", type: "(n)", meaning: "Vương quốc Anh", ex: "Linda is from Britain."},
+            {word: "America", ipa: "/əˈmerɪkə/", type: "(n)", meaning: "Nước Mỹ", ex: "Tom is from America."},
+            {word: "Australia", ipa: "/ɒˈstreɪliə/", type: "(n)", meaning: "Nước Úc", ex: "He is from Australia."},
+            {word: "Singapore", ipa: "/ˌsɪŋəˈpɔː(r)/", type: "(n)", meaning: "Nước Sing-ga-po", ex: "She is from Singapore."},
+            {word: "Malaysia", ipa: "/məˈleɪʃə/", type: "(n)", meaning: "Nước Ma-lai-xi-a", ex: "They are from Malaysia."},
+            {word: "Thailand", ipa: "/ˈtaɪlənd/", type: "(n)", meaning: "Nước Thái Lan", ex: "We are from Thailand."},
+            {word: "Japan", ipa: "/ˈdʒæpən/", type: "(n)", meaning: "Nước Nhật", ex: "Akiko is from Japan."},
+            {word: "new", ipa: "/njuː/", type: "(adj)", meaning: "Mới", ex: "I am a new pupil."},
+            {word: "friend", ipa: "/frend/", type: "(n)", meaning: "Bạn", ex: "They are friends."},
+            {word: "where", ipa: "/weə(r)/", type: "(adv)", meaning: "Ở đâu", ex: "Where are you from?"},
+            {word: "from", ipa: "/frɒm/", type: "(prep)", meaning: "Từ / Đến từ", ex: "I am from Britain."},
+            {word: "come", ipa: "/kʌm/", type: "(v)", meaning: "Đến", ex: "I come from Japan."},
+            // Unit 2
+            {word: "time", ipa: "/taɪm/", type: "(n)", meaning: "Thời gian", ex: "What time do you get up?"},
+            {word: "get up", ipa: "/ɡet ʌp/", type: "(v.p)", meaning: "Thức dậy", ex: "I get up at 6 a.m."},
+            {word: "have breakfast", ipa: "/hæv 'brekfəst/", type: "(v.p)", meaning: "Ăn sáng", ex: "Hoa has breakfast at 6:30."},
+            {word: "have lunch", ipa: "/hæv lʌntʃ/", type: "(v.p)", meaning: "Ăn trưa", ex: "John has lunch at 11 a.m."},
+            {word: "have dinner", ipa: "/hæv 'dɪnə(r)/", type: "(v.p)", meaning: "Ăn tối", ex: "They have dinner at 7 p.m."},
+            {word: "watch TV", ipa: "/wɒtʃ ti: 'vi:/", type: "(v.p)", meaning: "Xem ti-vi", ex: "I watch TV in the evening."},
+            {word: "go to school", ipa: "/ɡəʊ tə sku:l/", type: "(v.p)", meaning: "Đi học", ex: "I go to school in the morning."},
+            {word: "go to bed", ipa: "/ɡəʊ tə bed/", type: "(v.p)", meaning: "Đi ngủ", ex: "My mother goes to bed at 9 p.m."},
+            {word: "wash the face", ipa: "/wɒʃ ðə feɪs/", type: "(v.p)", meaning: "Rửa mặt", ex: "I wash my face after getting up."},
+            {word: "clean the teeth", ipa: "/kli:n ðə ti:θ/", type: "(v.p)", meaning: "Đánh răng", ex: "I clean my teeth twice a day."},
+            {word: "do homework", ipa: "/du: 'həʊmwɜ:k/", type: "(v.p)", meaning: "Làm bài tập về nhà", ex: "Jim does homework every day."},
+            {word: "read a book", ipa: "/ri:d ə bʊk/", type: "(v.p)", meaning: "Đọc sách", ex: "Her grandfather reads a book at 8 a.m."},
+            {word: "go out", ipa: "/ɡəʊ aʊt/", type: "(v.p)", meaning: "Đi ra ngoài", ex: "I and my friend go out on Sunday."},
+            {word: "chat with friends", ipa: "/tʃæt wɪð frendz/", type: "(v.p)", meaning: "Nói chuyện với bạn bè", ex: "Rose chats with her friends at break time."},
+            {word: "break time", ipa: "/'breɪk taɪm/", type: "(n)", meaning: "Giờ ra chơi", ex: "I play chess at break time."},
+            // Unit 3
+            {word: "Monday", ipa: "/'mʌndeɪ/", type: "(n)", meaning: "Thứ Hai", ex: "It's Monday."},
+            {word: "Tuesday", ipa: "/'tju:zdeɪ/", type: "(n)", meaning: "Thứ Ba", ex: "It's Tuesday."},
+            {word: "Wednesday", ipa: "/'wenzdeɪ/", type: "(n)", meaning: "Thứ Tư", ex: "It's Wednesday."},
+            {word: "Thursday", ipa: "/'θɜ:zdeɪ/", type: "(n)", meaning: "Thứ Năm", ex: "It's Thursday."},
+            {word: "Friday", ipa: "/'fraɪdeɪ/", type: "(n)", meaning: "Thứ Sáu", ex: "It's Friday."},
+            {word: "Saturday", ipa: "/'sætədeɪ/", type: "(n)", meaning: "Thứ Bảy", ex: "It's Saturday."},
+            {word: "Sunday", ipa: "/'sʌndeɪ/", type: "(n)", meaning: "Chủ Nhật", ex: "It's Sunday."},
+            {word: "today", ipa: "/tə'deɪ/", type: "(n)", meaning: "Hôm nay", ex: "Today is Wednesday."},
+            {word: "do housework", ipa: "/du: 'haʊswɜ:k/", type: "(v.p)", meaning: "Làm việc nhà", ex: "I do housework on Fridays."},
+            {word: "listen to music", ipa: "/'lɪsn tə 'mju:zɪk/", type: "(v.p)", meaning: "Nghe nhạc", ex: "Linda listens to music every day."},
+            {word: "study at school", ipa: "/'stʌdi ət sku:l/", type: "(v.p)", meaning: "Học ở trường", ex: "We study at school from Monday to Friday."},
+            {word: "read books", ipa: "/ri:d bʊks/", type: "(v.p)", meaning: "Đọc sách", ex: "My father loves reading books."},
+            {word: "visit", ipa: "/'vɪzɪt/", type: "(v)", meaning: "Thăm", ex: "My family visits me on Sundays."},
+            {word: "weekend", ipa: "/,wi:k'end/", type: "(n)", meaning: "Cuối tuần", ex: "We don't go to school on the weekend."},
+            {word: "weekday", ipa: "/'wi:kdeɪ/", type: "(n)", meaning: "Ngày trong tuần", ex: "Weekdays are from Monday to Friday."},
+            // Unit 4
+            {word: "January", ipa: "/'dʒænjuəri/", type: "(n)", meaning: "Tháng Giêng", ex: "It's in January."},
+            {word: "February", ipa: "/'februəri/", type: "(n)", meaning: "Tháng Hai", type: "(n)", meaning: "Tháng Hai", ex: "My birthday is in February."},
+            {word: "March", ipa: "/mɑːtʃ/", type: "(n)", meaning: "Tháng Ba", ex: "His birthday is in March."},
+            {word: "April", ipa: "/'eɪprəl/", type: "(n)", meaning: "Tháng Tư", ex: "Her birthday is in April."},
+            {word: "May", ipa: "/meɪ/", type: "(n)", meaning: "Tháng Năm", ex: "It's in May."},
+            {word: "month", ipa: "/mʌnθ/", type: "(n)", meaning: "Tháng", ex: "May and April are months of the year."},
+            {word: "when", ipa: "/wen/", type: "(adv)", meaning: "Khi nào", ex: "When is your birthday?"},
+            {word: "birthday", ipa: "/'bɜːθdeɪ/", type: "(n)", meaning: "Sinh nhật", ex: "My birthday is in May."},
+            {word: "party", ipa: "/'pɑːti/", type: "(n)", meaning: "Bữa tiệc", ex: "My party is on Monday."},
+            {word: "chips", ipa: "/tʃɪps/", type: "(n)", meaning: "Khoai tây chiên", ex: "I want some chips."},
+            {word: "grape", ipa: "/ɡreɪp/", type: "(n)", meaning: "Quả nho", ex: "He wants some grapes."},
+            {word: "jam", ipa: "/dʒæm/", type: "(n)", meaning: "Mứt", ex: "I eat bread with jam."},
+            {word: "cake", ipa: "/keɪk/", type: "(n)", meaning: "Bánh kem", ex: "My birthday cake is pink."},
+            {word: "milk", ipa: "/mɪlk/", type: "(n)", meaning: "Sữa", ex: "I like milk."},
+            {word: "juice", ipa: "/dʒuːs/", type: "(n)", meaning: "Nước ép", ex: "I want some juice."},
+            {word: "lemonade", ipa: "/ˌlemə'neɪd/", type: "(n)", meaning: "Nước chanh", ex: "Lemonade is sour."},
+            {word: "water", ipa: "/'wɔːtə(r)/", type: "(n)", meaning: "Nước lọc", ex: "Water is my favourite drink."},
+            {word: "eat", ipa: "/iːt/", type: "(v)", meaning: "Ăn", ex: "I want to eat some chips."},
+            {word: "drink", ipa: "/drɪŋk/", type: "(v)", meaning: "Uống", ex: "He is drinking water now."},
+            {word: "want", ipa: "/wɒnt/", type: "(v)", meaning: "Muốn", ex: "I want to make a hat."},
+            {word: "make", ipa: "/meɪk/", type: "(v)", meaning: "Làm", ex: "We make a birthday hat."},
+            {word: "hat", ipa: "/hæt/", type: "(n)", meaning: "Cái mũ", ex: "My birthday hat is blue."},
+            // Unit 5
+            {word: "can", ipa: "/kən/; /kæn/", type: "(m.v)", meaning: "Có thể", ex: "What can you do?"},
+            {word: "cook", ipa: "/kʊk/", type: "(v)", meaning: "Nấu ăn", ex: "I can cook."},
+            {word: "draw", ipa: "/drɔː/", type: "(v)", meaning: "Vẽ", ex: "She can draw."},
+            {word: "skip", ipa: "/skɪp/", type: "(v)", meaning: "Nhảy dây", ex: "They can skip."},
+            {word: "play", ipa: "/pleɪ/", type: "(v)", meaning: "Chơi", ex: "Linda can't play chess."},
+            {word: "guitar", ipa: "/ɡɪ'tɑː(r)/", type: "(n)", meaning: "Đàn ghi-ta", ex: "Jenny can play the guitar."},
+            {word: "piano", ipa: "/pi'ænəʊ/", type: "(n)", meaning: "Đàn dương cầm", ex: "We can play the piano."},
+            {word: "badminton", ipa: "/'bædmɪntən/", type: "(n)", meaning: "Cầu lông", ex: "I can play badminton."},
+            {word: "football", ipa: "/'fʊtbɔːl/", type: "(n)", meaning: "Bóng đá", ex: "We play football together."},
+            {word: "ride", ipa: "/raɪd/", type: "(v)", meaning: "Lái, cưỡi", ex: "I can't ride a horse."},
+            {word: "bike", ipa: "/baɪk/", type: "(n)", meaning: "Xe đạp", ex: "He can ride a bike."},
+            {word: "horse", ipa: "/hɔːs/", type: "(n)", meaning: "Con ngựa", ex: "My father can ride a horse."},
+            {word: "fly", ipa: "/flaɪ/", type: "(v)", meaning: "Bay, thả", ex: "I can fly a kite."},
+            {word: "kite", ipa: "/kaɪt/", type: "(n)", meaning: "Diều", ex: "She can fly a kite."},
+            {word: "roller skate", ipa: "/'rəʊlə skeɪt/", type: "(v)", meaning: "Trượt patanh", ex: "I can't roller skate."},
+            {word: "swim", ipa: "/swɪm/", type: "(v)", meaning: "Bơi", ex: "I can't swim."}
+        ];
+
+        let currentFcIndex = 0;
+        let currentFcWord = flashcardData[0].word;
+
+        function updateFlashcard() {
+            const item = flashcardData[currentFcIndex];
+            currentFcWord = item.word;
+            document.getElementById('fc-word-label').innerText = item.word;
+            document.getElementById('fc-ipa-label').innerText = item.ipa;
+            document.getElementById('fc-type-label').innerText = item.type;
+            document.getElementById('fc-meaning-label').innerText = item.meaning;
+            document.getElementById('fc-example-label').innerText = "Ex: " + item.ex;
+            
+            // Ensure card is front-facing when changing
+            document.getElementById('fc-card').classList.remove('flipped');
+        }
+
+        function flipCard() {
+            document.getElementById('fc-card').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            currentFcIndex = (currentFcIndex + 1) % flashcardData.length;
+            updateFlashcard();
+        }
+
+        function prevCard() {
+            currentFcIndex = (currentFcIndex - 1 + flashcardData.length) % flashcardData.length;
+            updateFlashcard();
+        }
+
+        // Certificate Generator
+        function generateCertificate() {
+            const name = document.getElementById('studentNameInput').value.trim();
+            if(!name) {
+                alert('Vui lòng nhập tên của bạn trước khi tạo chứng nhận nhé!');
+                return;
+            }
+            document.getElementById('displayName').innerText = name;
+            document.getElementById('certDisplay').style.display = 'block';
+        }
+
+        // Initialize quizzes on load
+        window.onload = function() {
+            renderQuizzes();
+            updateFlashcard();
+        };
+    </script>
+</body>
+</html>
